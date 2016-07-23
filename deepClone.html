@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var people = {
+			name: 'zhangsan',
+			age: 18,
+			father: {
+				name: 'zhangxx',
+				age: 40
+			}
+		};
+
+		// var people2 = clone(people);
+		var people2 = JSON.stringify(people);
+		people2 = JSON.parse(people2);
+		people.father.name = 'zhangyy';
+		console.log(people2.father.name);
+
+		function clone(obj){
+			var newObj = new Object();
+			for(var p in obj){
+				if(typeof obj[p] == 'object'){
+					newObj[p] = clone(obj[p]);
+				}else{
+					newObj[p] = obj[p];
+				}
+			}
+			return newObj;
+		}
+	</script>
+</body>
+</html>
