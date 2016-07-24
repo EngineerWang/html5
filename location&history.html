@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">随机</button>
+	<div id="container"></div>
+	<script>
+		var oBtn = document.getElementById('btn');
+		var oContainer = document.getElementById('container');
+		/*var obj = {};*/
+		oBtn.onclick = function(){
+			var arr = [];
+			for(var i=0; i<7; i++){
+				arr.push(Math.floor(Math.random() * 37));
+			}
+			oContainer.innerHTML = arr;
+			history.pushState(arr, '');
+			/*location.hash = Math.random();
+			obj[location.hash] = arr;*/
+		}
+		/*window.onhashchange = function(){
+			oContainer.innerHTML = obj[location.hash];
+		} */
+		window.onpopstate = function(e){
+			oContainer.innerHTML = e.state;
+		}
+	</script>
+</body>
+</html>
